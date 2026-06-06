@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* ─── CSS Variables ───────────────────────────────────────── */
+:root {
+  --bg-main: #050c14;
+  --text-muted: #b0bec5;
+}
+
+/* ─── Custom Card (ملفاتك الأصلية) ───────────────────────── */
+.custom-card {
+  background-color: #0b1929;
+  border: 1px solid #132f4c;
+  border-radius: 20px;
+  padding: 2rem;
+  transition: border-color 0.4s;
+}
+.custom-card:hover {
+  border-color: #00e5ff;
+}
+
+/* ─── Input Wrapper ───────────────────────────────────────── */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #132f4c;
+  border: 1px solid #1c3d5e;
+  border-radius: 12px;
+  padding: 10px 14px;
+  direction: rtl;
+  transition: border-color 0.3s;
+}
+.input-wrapper:focus-within {
+  border-color: #00e5ff;
+}
+
+/* ─── Input Field (اسم مختلف لتجنب التعارض مع Tailwind) ── */
+.custom-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Cairo", sans-serif;
+  font-size: 0.95rem;
+  direction: rtl;
+}
+.custom-input-field::placeholder {
+  color: var(--text-muted);
+}
+
+/* ─── Primary Button ──────────────────────────────────────── */
+.primary-btn {
+  background: linear-gradient(135deg, #00e5ff 0%, #7209b7 100%);
+  color: white;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+}
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 229, 255, 0.45);
+}
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Dashboard Components (من مشروع زميلك) ─────────────── */
+@layer base {
+  html { @apply scroll-smooth; }
+  body {
+    font-family: "Cairo", system-ui, -apple-system, sans-serif;
+  }
+  .rtl { direction: rtl; }
+  .ltr { direction: ltr; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200;
+  }
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition duration-200;
+  }
+  .btn-danger {
+    @apply bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-200;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+  .dashboard-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
